@@ -34,10 +34,15 @@ class Images {
     constructor(pics) {
         this.pics = pics;
 
+        //grab all the imgs
+        this.img = document.querySelectorAll('.carousel img');
+
+        //select individual img
+        this.current = 
     }
 
     nextImage(int) {
-
+        
     }
 }
 
