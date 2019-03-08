@@ -10,6 +10,10 @@ class Carousel {
     this.pics = document.querySelectorAll('.carousel img');
     this.imgs = new Images(pics);
 
+    //grab single img
+    // this.current = document.querySelector('.active-img')
+    // not sure about the approach
+
     //event listener for the click buttons
     this.leftBtn.addEventListener('click', () => this.moveRight());
     this.rightBtn.addEventListener('click', () => this.moveLeft());
@@ -17,7 +21,9 @@ class Carousel {
     }
 
     moveLeft() {
+        // this.imgs.forEach(pic => pic.classList.remove('active-img'));
         this.imgs.forEach(pic => pic.setAttribute('style', 'display:none'));
+
 
         this.imgs.nextImage(-1);
 
