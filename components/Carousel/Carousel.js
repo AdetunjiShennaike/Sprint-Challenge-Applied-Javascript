@@ -8,11 +8,12 @@ class Carousel {
 
     //grab all the images
     this.pics = document.querySelectorAll('.carousel img');
-    this.imgs = new Images(pics);
 
     //grab single img
-    // this.current = document.querySelector('.active-img')
-    // not sure about the approach
+    this.current = Array.from(this.pics)[0];
+    
+    //make a new image class using the active image
+    this.imgs = Array.from(this.pics).map(img => new Images(img));
 
     //event listener for the click buttons
     this.leftBtn.addEventListener('click', () => this.moveRight());
@@ -21,18 +22,22 @@ class Carousel {
     }
 
     moveLeft() {
+        //remove all the images from view
         // this.imgs.forEach(pic => pic.classList.remove('active-img'));
-        this.imgs.forEach(pic => pic.setAttribute('style', 'display:none'));
+        this.pics.forEach(pic => pic.setAttribute('style', 'display:none'));
 
-
+        //call the function to select the next image
         this.imgs.nextImage(-1);
 
     }
 
     moveRight() {
-        this.imgs.forEach(pic => pic.setAttribute('style', 'display:none'));
+        //remove all the images from view
+        // this.imgs.forEach(pic => pic.classList.remove('active-img'));
+        this.pics.forEach(pic => pic.setAttribute('style', 'display:none'));
 
-        this.imgs.nextImage(1);
+        //call the function to select the next image
+        this.imgs.nextImage(1)
     }
 }
 
@@ -43,8 +48,8 @@ class Images {
         //grab all the imgs
         this.img = document.querySelectorAll('.carousel img');
 
-        //select individual img
-        this.current = 
+        //select individual img from the array
+        // this.current = 
     }
 
     nextImage(int) {
@@ -53,7 +58,7 @@ class Images {
 }
 
 let carousel = document.querySelector('carousel');
-return new Carousel(carousel);
+new Carousel(carousel);
 
 /* If You've gotten this far, you're on your own! Although we will give you some hints:
     1. You will need to grab a reference to the carousel, and in it grab the left and right buttons
